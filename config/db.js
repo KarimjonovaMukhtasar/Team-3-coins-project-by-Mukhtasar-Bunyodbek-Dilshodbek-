@@ -10,4 +10,4 @@ pool.use({
     port: 5432
 })
 
-export default {pool}
+export default pool
