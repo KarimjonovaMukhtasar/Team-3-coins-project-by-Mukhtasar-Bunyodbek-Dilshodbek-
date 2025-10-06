@@ -1,4 +1,4 @@
--- Active: 1759236719174@@127.0.0.1@5432@coins
+-- Active: 1759236905510@@127.0.0.1@5432@coins
 
 create database coins;
 
@@ -56,3 +56,6 @@ create table tags(id serial primary key,
 create table collection_tags(id serial primary key,
         collection_id int REFERENCES collections(id),
         tag_id int REFERENCES tags(id));
+
+select * from users;
+
