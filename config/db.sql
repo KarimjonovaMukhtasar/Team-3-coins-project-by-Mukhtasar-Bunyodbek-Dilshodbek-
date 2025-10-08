@@ -45,17 +45,18 @@ create table trades(id SERIAL PRIMARY KEY,
         created_at TIMESTAMP default now());
 
 create table comments(id serial primary key,
-        collections_id int references collections(id),
+        collections_id int references collections(id) on delete cascade,
         user_id int references users(id),
         text text,
         created_at TIMESTAMP DEFAULT now());
+
 
 create table tags(id serial primary key,
         name varchar unique)
 
 create table collection_tags(id serial primary key,
-        collection_id int REFERENCES collections(id),
-        tag_id int REFERENCES tags(id));
+        collection_id int REFERENCES collections(id) on delete cascade,
+        tag_id int REFERENCES tags(id) on delete cascade);
 
 select * from users;
 
