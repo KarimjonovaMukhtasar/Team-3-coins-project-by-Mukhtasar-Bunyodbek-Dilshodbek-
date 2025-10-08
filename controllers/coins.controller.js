@@ -2,8 +2,10 @@
 import pool from "../config/db.js"
 const findAll = async (req, res) => {
     try {
-        const query = `Select * from coins`
-        const allCoins = await pool.query(query)
+        const { page = 1, limit = 10} = req.query
+        const offset = (page-1)*limit
+        const query = `Select * from coins OFFSET $1 LIMIT $2`
+        const allCoins = await pool.query(query, [offset, limit])
         return res.status(200).json({
             message: `G'aznadagi barcha boyliklar:`,
             coins: allCoins.rows
